@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,20 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private fb : FormBuilder){}
+
+  registrationForm=this.fb.group({
+    userName:["Vishal"],
+    password:[''],
+    confirmPassword:[''],
+    address:this.fb.group({
+      city:[''],
+      pincode:[''],
+      state:['']
+    })
+  })
+
   loadApiData() {
     this.registrationForm.setValue({
       "userName":"Vishal",
@@ -20,14 +34,4 @@ export class AppComponent {
     })
   }
   title = 'reactive-forms';
-  registrationForm = new FormGroup({
-    userName: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-    address: new FormGroup({
-      city: new FormControl(''),
-      state: new FormControl(''),
-      pincode: new FormControl('')
-    })
-  });
 }

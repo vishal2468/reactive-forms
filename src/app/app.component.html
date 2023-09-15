@@ -10,6 +10,7 @@
       <div *ngIf="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched">
         <small *ngIf="userName?.hasError('required')" class="text-danger">Username is Required</small>
         <small *ngIf="registrationForm.get('userName')?.hasError('minlength')" class="text-danger">Username must be 3 characters</small>
+        <small *ngIf="registrationForm.get('userName')?.hasError('forbiddenName')" class="text-danger">Username must not contain admin keyword</small>
       </div>
     </div>
     <div class="form-group">

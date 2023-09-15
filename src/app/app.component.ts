@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { forbiddenNameValdator } from './shared/user-name.validator';
+import { PasswordValidator } from './shared/password.validator';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent {
       pincode:[''],
       state:['']
     })
-  })
+  },{validator: PasswordValidator})
 
   loadApiData() {
     this.registrationForm.setValue({

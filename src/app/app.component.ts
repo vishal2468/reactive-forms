@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
         pincode: [''],
         state: ['']
       }),
-      alternateEmails: this.fb.array([]),
+      alternateAddress: this.fb.array([]),
     }, { validator: PasswordValidator })
 
     this.registrationForm.get('subscribe')?.valueChanges.subscribe(checkedValue => {
@@ -42,12 +42,16 @@ export class AppComponent implements OnInit {
   get userName() {
     return this.registrationForm.get('userName')
   }
-  get alternateEmails() {
-    return this.registrationForm.get('alternateEmails') as FormArray
+  get alternateAddress() {
+    return this.registrationForm.get('alternateAddress') as FormArray
   }
 
-  addAlternateEmails() {
-    this.alternateEmails.push(this.fb.control(''));
+  addAlternateAddress() {
+    this.alternateAddress.push(this.fb.group({
+      city: [''],
+      pincode: [''],
+      state: ['']
+    }));
   }
 
   loadApiData() {

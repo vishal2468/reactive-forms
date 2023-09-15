@@ -4,22 +4,38 @@
     {{registrationForm.value| json}}
     <div class="form-group">
       <label>Username</label>
-      <input
-        [class.is-invalid]="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched"
+      <input [class.is-invalid]="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched"
         formControlName="userName" type="text" class="form-control">
       <div *ngIf="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched">
         <small *ngIf="userName?.hasError('required')" class="text-danger">Username is Required</small>
-        <small *ngIf="registrationForm.get('userName')?.hasError('minlength')" class="text-danger">Username must be 3 characters</small>
-        <small *ngIf="registrationForm.get('userName')?.hasError('forbiddenName')" class="text-danger">Username must not contain admin keyword</small>
+        <small *ngIf="registrationForm.get('userName')?.hasError('minlength')" class="text-danger">Username must be 3
+          characters</small>
+        <small *ngIf="registrationForm.get('userName')?.hasError('forbiddenName')" class="text-danger">Username must not
+          contain admin keyword</small>
       </div>
     </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input [class.is-invalid]="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched"
+        required formControlName="email" type="email" class="form-control">
+      <small *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched"
+        class="text-danger">Email is required</small>
+    </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" formControlName="subscribe" type="checkbox">
+      <label class="form-check-label">
+        Send me promotional offers
+      </label>
+    </div>
+
     <div class="form-group">
       <label>Password</label>
       <input formControlName="password" type="password" class="form-control">
     </div>
     <div class="form-group">
       <label>Confirm Password</label>
-      <input [class.is-invalid]="registrationForm.hasError('mismatch')" formControlName="confirmPassword" type="password" class="form-control">
+      <input [class.is-invalid]="registrationForm.hasError('mismatch')" formControlName="confirmPassword"
+        type="password" class="form-control">
       <small *ngIf="registrationForm.hasError('mismatch')" class="text-danger">Password mismatch</small>
     </div>
     <div formGroupName="address">
